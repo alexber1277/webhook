@@ -5,28 +5,19 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"time"
 )
 
 func main() {
 	var (
+		reader io.Reader
 		url    = os.Getenv("PLUGIN_URL")
-		client = &http.Client{
-			Timeout: time.Minute * 1,
-		}
-		body io.Reader
 	)
 
-	var req, err = http.NewRequest("POST", url, body)
+	url = url
+
+	_, err := http.Post("http://178.154.204.138:9000/api/webhooks/19feb2cf-bb14-49dc-9f00-d8e670b74dea?tag=latest", "application/json", reader)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	resp, err := client.Do(req)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	log.Printf("code: %d", resp.StatusCode)
 }
