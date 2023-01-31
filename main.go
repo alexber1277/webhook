@@ -13,7 +13,7 @@ func main() {
 		hostApi = os.Getenv("PLUGIN_HOST_API")
 		token   = os.Getenv("PLUGIN_TOKEN")
 	)
-	_, err := http.Post(hostApi+token+"?tag=latest", "application/json", reader)
+	_, err := http.Post(hostApi+token, "application/json", reader)
 	if err != nil {
 		log.Fatal(err)
 	}
