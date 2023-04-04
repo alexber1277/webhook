@@ -10,10 +10,9 @@ import (
 func main() {
 	var (
 		reader  io.Reader
-		hostApi = os.Getenv("PLUGIN_HOST_API")
-		token   = os.Getenv("PLUGIN_TOKEN")
+		baseUrl = os.Getenv("PLUGIN_BASE_URL")
 	)
-	_, err := http.Post(hostApi+token, "application/json", reader)
+	_, err := http.Post(baseUrl, "application/json", reader)
 	if err != nil {
 		log.Fatal(err)
 	}
